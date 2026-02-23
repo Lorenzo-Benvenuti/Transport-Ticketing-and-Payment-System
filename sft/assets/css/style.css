@@ -1,0 +1,536 @@
+:root {
+  --bg: #0b1b2b;
+  --fg: #f7fbff;
+  --muted: #c6d5e3;
+  --card: #12263a;
+  --accent: #4da3ff;
+  --ok: #20b16a;
+  --err: #e05656;
+  --header-h: 56px;
+  --gap-section: 24px;
+  --gap-field: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    "Helvetica Neue", Arial;
+  margin: 0;
+  color: var(--fg);
+  background: linear-gradient(180deg, #0b1b2b, #0b1b2b 60%, #0f2235);
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.app-header {
+  background: #091624;
+  border-bottom: 1px solid #0f2b45;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.app-header h1 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.app-header .container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 0;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-right: 16px;
+}
+
+nav a:hover {
+  color: var(--fg);
+}
+
+.btn {
+  background: var(--accent);
+  color: #001a2e;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn.danger {
+  background: var(--err);
+  color: #fff;
+}
+
+main.container {
+  flex: 1;
+  padding: calc(var(--header-h) + 8px) 0 60px;
+}
+
+.hero {
+  padding: 24px 0;
+}
+
+.cards {
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.cards > .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card,
+.panel,
+.form,
+.table {
+  width: 100%;
+  width: 100%;
+  overflow-x: auto;
+  background: var(--card);
+  border: 1px solid #15304a;
+  border-radius: 14px;
+  color: var(--fg);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.form {
+  padding: 16px;
+  display: grid;
+  gap: var(--gap-field);
+  max-width: 520px;
+  margin-top: 30px;
+}
+
+.form.inline {
+  grid-template-columns: 1fr 1fr 1fr auto;
+  align-items: end;
+}
+
+.form label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.form input,
+.form select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #244663;
+  background: #0b1b2b;
+  color: var(--fg);
+}
+
+.form .btn {
+  width: 100%;
+}
+
+.form.inline .btn {
+  width: auto;
+}
+
+.alert {
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.alert.success {
+  background: #0c2b1e;
+  border: 1px solid #1e6a44;
+  color: #b7f7d6;
+}
+
+.alert.error {
+  background: #2b0c0c;
+  border: 1px solid #6a1e1e;
+  color: #f7b7b7;
+}
+
+.table {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  margin-top: 30px;
+}
+
+.table .row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  column-gap: 16px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #15304a;
+  align-items: center;
+}
+
+.table .row.head {
+  background: #0f2235;
+  color: #b9d2e7;
+  font-weight: 600;
+}
+
+.table .row:last-child {
+  border-bottom: 0;
+}
+
+.app-footer {
+  padding: 18px 0;
+  background: #091624;
+  border-top: 1px solid #0f2b45;
+  text-align: center;
+  color: #9ab2c6;
+  margin-top: auto;
+}
+
+.toolbar {
+  margin-top: 55px;
+  margin-bottom: 30px;
+}
+
+.request-list .card {
+  margin-bottom: 16px;
+}
+
+/* Griglia backoffice */
+
+.grid-quad {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  gap: var(--gap-section);
+  align-items: stretch;
+}
+
+.grid-quad > .card {
+  height: 100%;
+}
+
+.grid-quad > .card.card-wide {
+  height: auto;
+  align-self: start;
+}
+
+/* Ordine sezioni */
+
+.section-add {
+  order: 1;
+}
+.section-compose {
+  order: 2;
+}
+.section-new {
+  order: 3;
+}
+.section-schedule {
+  order: 4;
+}
+
+.card-wide {
+  grid-column: 1 / -1;
+}
+
+/* Tabella composizione dei treni */
+
+.table-comp .row,
+.table-comp .row.head {
+  grid-template-columns: 220px 1fr;
+}
+
+.composizione-box {
+  max-height: 260px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  line-height: 1.25;
+  padding-right: 6px;
+  white-space: normal;
+}
+
+.comp-item {
+  display: block;
+  margin: 2px 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Tabella corse attive */
+
+.table-corse .row,
+.table-corse .row.head {
+  grid-template-columns: 80px 220px 1fr 120px 120px;
+}
+
+.cell-nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cell-date {
+  letter-spacing: 0.2px;
+}
+
+.form select {
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Sezione responsive */
+
+@media (max-width: 900px) {
+  .grid-quad {
+    grid-template-columns: 1fr;
+  }
+  .table-comp .row,
+  .table-comp .row.head {
+    grid-template-columns: 180px 1fr;
+  }
+}
+
+.cards {
+  align-items: stretch;
+  grid-auto-rows: 1fr;
+}
+
+.cards > .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards > .card > *:last-child {
+  margin-top: auto;
+}
+
+/* Footer */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* ancora il footer in fondo alla pagina */
+}
+
+/* Patch tabelle backoffice */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  overflow-x: auto; /* previene overflow */
+  display: block;
+}
+
+table th,
+table td {
+  padding: 8px 10px;
+  white-space: nowrap; /* non va a capo */
+}
+
+table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+table td {
+  max-width: 250px;
+}
+
+/* Fine patch */
+
+.table .row > div {
+  white-space: nowrap;
+}
+
+/* Allineamento colonne backoffice admin (6 colonne) */
+
+.table.cols-6 .row,
+.table.cols-6 .row.head {
+  display: grid;
+  grid-template-columns:
+    minmax(260px, 1.6fr) /* Corsa */
+    minmax(260px, 2fr) /* Tratta */
+    minmax(120px, 1fr) /* Incasso */
+    minmax(100px, 0.8fr) /* Venduti */
+    minmax(120px, 1fr) /* Stato */
+    minmax(140px, 1fr); /* Azioni */
+}
+
+.table.cols-6 .row > div {
+  white-space: nowrap;
+}
+
+.table.cols-6 {
+  width: 100%;
+}
+
+/* Allineamento colonne sezione "Orari" (7 colonne) */
+
+.table.cols-7 .row,
+.table.cols-7 .row.head {
+  display: grid;
+  grid-template-columns:
+    minmax(180px, 1.3fr) /* Data */
+    minmax(180px, 1.2fr) /* Partenza */
+    minmax(220px, 1.8fr) /* Arrivo */
+    minmax(100px, 0.8fr) /* Treno */
+    minmax(120px, 0.9fr) /* Posti */
+    minmax(120px, 0.9fr) /* Prezzo */
+    minmax(140px, 0.9fr); /* Acquista */
+}
+
+.table.cols-7 .row > div {
+  white-space: nowrap;
+}
+
+.table.cols-7 {
+  width: 100%;
+}
+
+/* Patch layout sezione "Orari" */
+
+.table.cols-7 .row,
+.table.cols-7 .row.head {
+  grid-template-columns:
+    minmax(140px, 1fr) /* Data */
+    minmax(130px, 1fr) /* Partenza */
+    minmax(200px, 1fr) /* Arrivo (wrap) */
+    minmax(80px, 0.6fr) /* Treno */
+    minmax(90px, 0.6fr) /* Posti */
+    minmax(90px, 0.6fr) /* Prezzo */
+    minmax(120px, 0.6fr); /* Acquista */
+}
+
+/* Wrap nomi lunghi */
+
+.table.cols-7 .row > div:nth-child(3) {
+  white-space: normal;
+}
+
+/* Patch colonne più grandi sezione "Orari" */
+
+.table.cols-7 .row,
+.table.cols-7 .row.head {
+  grid-template-columns:
+    minmax(200px, 1.2fr) /* Data */
+    minmax(200px, 1.2fr) /* Partenza */
+    minmax(260px, 1.8fr) /* Arrivo */
+    minmax(120px, 0.8fr) /* Treno */
+    minmax(120px, 0.8fr) /* Posti */
+    minmax(120px, 0.8fr) /* Prezzo */
+    minmax(140px, 0.8fr); /* Acquista */
+}
+
+.table.cols-7 .row > div {
+  white-space: nowrap !important;
+}
+
+/* Allargamento container sezione "Orari" */
+
+.container.page-orari {
+  width: min(1500px, 98%);
+}
+
+/* Form Pay Steam */
+
+.paysteam-form label {
+  display: block;
+}
+
+.paysteam-form select,
+.paysteam-form input {
+  width: 100%;
+}
+
+.paysteam-form {
+  display: block;
+}
+
+/* Layout colonne tabella biglietti acquistati */
+
+.table.cols-4 > .row,
+.table.cols-4 > .row.head {
+  display: grid !important; /* annulla le auto-colonne impostate globalmente */
+  grid-auto-flow: row !important;
+  grid-auto-columns: auto !important;
+  grid-template-columns:
+    minmax(0, 1.8fr) /* Corsa  */
+    minmax(0, 0.6fr) /* Data   */
+    minmax(0, 1.2fr) /* Posto  */
+    minmax(0, 1fr) !important; /* Status */
+  column-gap: 16px !important;
+}
+
+.table.cols-4 > .row > div,
+.table.cols-4 > .row.head > div {
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Colonna "Posto" centrata */
+
+.table.cols-4 > .row > div:nth-child(3) {
+  text-align: center !important;
+}
+
+/* Mobile responsive */
+
+@media (max-width: 640px) {
+  .table.cols-4 > .row,
+  .table.cols-4 > .row.head {
+    grid-template-columns:
+      minmax(0, 1.5fr)
+      minmax(0, 1.2fr)
+      minmax(0, 0.6fr)
+      minmax(0, 0.8fr) !important;
+  }
+}
