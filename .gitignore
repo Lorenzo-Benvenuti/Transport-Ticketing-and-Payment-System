@@ -1,0 +1,16 @@
+# Environment files (secrets)
+.env
+**/.env
+
+# Logs / temp
+storage/logs/
+*.log
+*.tmp
+*.cache
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+vendor/
