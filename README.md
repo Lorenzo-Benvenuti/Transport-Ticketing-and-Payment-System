@@ -12,53 +12,13 @@ Two full‑stack **PHP + MySQL** web applications in one repo:
 - **SFT** — public transport ticketing system (routes/schedules, ticket purchase, admin/operations backoffice)
 - **PaySteam** — payment/wallet system (consumer dashboard, merchant area, signed callback simulation)
 
-## Screenshots
+## Overview
 
-**SFT — Checkout**
-<img src="docs/screenshots/sft-checkout.png" alt="SFT checkout" width="900" />
-
-**PaySteam — Payment approval**
-<img src="docs/screenshots/paysteam-approve.png" alt="PaySteam approval" width="900" />
-
-<details>
-  <summary>More screenshots</summary>
-
-  <figure>
-    <figcaption><strong>SFT — Dashboard</strong></figcaption>
-    <img src="docs/screenshots/sft-dashboard.png" width="900" />
-  </figure>
-
-  <figure>
-    <figcaption><strong>SFT — Ticket Section</strong></figcaption>
-    <img src="docs/screenshots/sft-ticket-section.png" width="900" />
-  </figure>
-
-  <figure>
-    <figcaption><strong>SFT — Admin Backoffice</strong></figcaption>
-    <img src="docs/screenshots/sft-admin-backoffice.png" width="900" />
-  </figure>
-
-  <figure>
-    <figcaption><strong>SFT — Operations Backoffice</strong></figcaption>
-    <img src="docs/screenshots/sft-operations-backoffice.png" width="900" />
-  </figure>
-
-  <figure>
-    <figcaption><strong>PaySteam — Dashboard</strong></figcaption>
-    <img src="docs/screenshots/paysteam-dashboard.png" width="900" />
-  </figure>
-
-  <figure>
-    <figcaption><strong>PaySteam — User Dashboard</strong></figcaption>
-    <img src="docs/screenshots/paysteam-user-dashboard.png" width="900" />
-  </figure>
-
-  <figure>
-    <figcaption><strong>PaySteam — Transactions</strong></figcaption>
-    <img src="docs/screenshots/paysteam-transactions.png" width="900" />
-  </figure>
-
-</details>
+- Two-service architecture (Ticketing + Payment Provider simulator)
+- Webhook-based confirmation (PaySteam → SFT) with HMAC signature verification
+- Clear separation between PUBLIC vs INTERNAL base URLs (browser vs server-to-server inside Docker)
+- Reproducible local setup (Docker Compose + DB init scripts)
+- Baseline automation via GitHub Actions (lint/tests)
 
 ## Tech stack
 
@@ -75,15 +35,7 @@ Two full‑stack **PHP + MySQL** web applications in one repo:
 - `docker/` — Docker Compose + MySQL init scripts
 - `docs/` — PDFs (project reports)
 
-## What this project demonstrates
-
-- Two-service architecture (Ticketing + Payment Provider simulator)
-- Webhook-based confirmation (PaySteam → SFT) with HMAC signature verification
-- Clear separation between PUBLIC vs INTERNAL base URLs (browser vs server-to-server inside Docker)
-- Reproducible local setup (Docker Compose + DB init scripts)
-- Baseline automation via GitHub Actions (lint/tests)
-
-## Quick start (Docker — recommended)
+## Quick start (Docker recommended)
 
 ### TL;DR
 ```bash
@@ -145,7 +97,7 @@ docker compose up -d --build
 - Consumer: `utente@example.com` / `utente123`
 - Merchant: `esercente@paysteam.it` / `merchant123`
 
-## Notes on the payment demo
+## Notes
 
 The SFT checkout flow is wired to the PaySteam simulator via HTTP calls and return/webhook URLs.
 
@@ -193,6 +145,54 @@ Security mechanisms included:
 - Password hashing
 - Env-based secrets (API token + webhook secret)
 - HMAC-signed callback from PaySteam
+
+## Screenshots
+
+**SFT — Checkout**
+<img src="docs/screenshots/sft-checkout.png" alt="SFT checkout" width="900" />
+
+**PaySteam — Payment approval**
+<img src="docs/screenshots/paysteam-approve.png" alt="PaySteam approval" width="900" />
+
+<details>
+  <summary>More screenshots</summary>
+
+  <figure>
+    <figcaption><strong>SFT — Dashboard</strong></figcaption>
+    <img src="docs/screenshots/sft-dashboard.png" width="900" />
+  </figure>
+
+  <figure>
+    <figcaption><strong>SFT — Ticket Section</strong></figcaption>
+    <img src="docs/screenshots/sft-ticket-section.png" width="900" />
+  </figure>
+
+  <figure>
+    <figcaption><strong>SFT — Admin Backoffice</strong></figcaption>
+    <img src="docs/screenshots/sft-admin-backoffice.png" width="900" />
+  </figure>
+
+  <figure>
+    <figcaption><strong>SFT — Operations Backoffice</strong></figcaption>
+    <img src="docs/screenshots/sft-operations-backoffice.png" width="900" />
+  </figure>
+
+  <figure>
+    <figcaption><strong>PaySteam — Dashboard</strong></figcaption>
+    <img src="docs/screenshots/paysteam-dashboard.png" width="900" />
+  </figure>
+
+  <figure>
+    <figcaption><strong>PaySteam — User Dashboard</strong></figcaption>
+    <img src="docs/screenshots/paysteam-user-dashboard.png" width="900" />
+  </figure>
+
+  <figure>
+    <figcaption><strong>PaySteam — Transactions</strong></figcaption>
+    <img src="docs/screenshots/paysteam-transactions.png" width="900" />
+  </figure>
+
+</details>
 
 ## License
 
